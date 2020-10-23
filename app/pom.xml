@@ -231,26 +231,28 @@
   <profiles>
     <profile>
       <id>debug</id>
+
       <properties>
         <skipTests>true</skipTests>
         <packaging.type>war</packaging.type>
         <conf.directory>${project.build.directory}/test-classes</conf.directory>
         <audit.directory>${project.build.directory}/audit</audit.directory>
       </properties>
+
       <dependencies>
         <dependency>
-          <groupId>com.virginvoyages.iam</groupId>
-          <artifactId>syncope-enduser-ext-flowable</artifactId>
+          <groupId>net.tirasa.syncope.wicket-enduser.ext</groupId>
+          <artifactId>syncope-wicket-enduser-ext-flowable</artifactId>
           <version>${project.version}</version>
         </dependency>
         <dependency>
-          <groupId>com.virginvoyages.iam</groupId>
-          <artifactId>syncope-enduser-ext-saml2sp</artifactId>
+          <groupId>net.tirasa.syncope.wicket-enduser.ext</groupId>
+          <artifactId>syncope-wicket-enduser-ext-saml2sp</artifactId>
           <version>${project.version}</version>
         </dependency>
         <dependency>
-          <groupId>com.virginvoyages.iam</groupId>
-          <artifactId>syncope-ext-oidcclient-client-enduser</artifactId>
+          <groupId>net.tirasa.syncope.wicket-enduser.ext</groupId>
+          <artifactId>syncope-wicket-enduser-ext-oidc</artifactId>
           <version>${project.version}</version>
         </dependency>
       </dependencies>

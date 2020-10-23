@@ -26,7 +26,7 @@
     <version>2.1.8-SNAPSHOT</version> 
   </parent>
 
-  <name>Apache Syncope: Wicket Enduser Common App</name>
+  <name>Apache Syncope: Wicket Enduser App</name>
   <groupId>net.tirasa.syncope.wicket-enduser</groupId>
   <artifactId>syncope-wicket-enduser-app</artifactId>
   <packaging>jar</packaging>

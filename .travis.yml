@@ -1,0 +1,42 @@
+#
+#  Copyright (C) 2020 Tirasa (info@tirasa.net)
+# 
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+#
+
+language: java
+os: linux
+dist: bionic
+arch: amd64
+jdk:
+  - openjdk8
+cache:
+  bundler: false
+  cargo: false
+  directories:
+    - '$HOME/.m2'
+git:
+  depth: 2
+
+env:
+  global:
+    - SONATYPE_USERNAME=chicchiricco
+    - secure: "MqCtoYjEnnQPEWq/t39rx6lDj1tJg1VQ+6Dp6OMHPGyXc5URgIlZ3PcDdRGna+QSLufLAxPh4mi2b2/DO7P5+stu1sPNcZOuqEtRsspN2KOmX2/NBrJFspOsR6QU6xwCWWEIAZwBeikkDOw7+ItJvxbwoEFxOFR37Q3tI7oTcYWblsVzgtU1cBej8vbKuUYq+6uQHAf5/YSOjrw5W+EKrm2EH3mFR7TomHIiO2BNGS79T7fA5D6jbj5qhuSFpkYYvt9Q6JOuizf0nPfhcLqVaxEHbI8WKGa2xJviFRagLd3YuXO+Bu5NTfikHZFSTR6Ck1pHoiqNY1dQ8emsgxgxNdrTUhrME8/Nbn4Sx66u0WMWw7HJlaPwLNwm5+zIi2OBXMtZ71Z7TfJQkwjioWe7kI6/yO/GRpvuizEGLKm7eo69vCcDHfL0KoBcDqF/Gi1jNis1Fgpw9HeEvNES0wyIJFZlgSI1oHZgmmU94t/hmyyEb8TkBxFQ7BXrZhSwDpjh+55HGk9MN4h8S48x2KNIIB0bRznjGTNIQgsbeDDdm1bwjIRC47AVAHzABAbpE9UM5YsgvsznWMkletfgq5dkRtAgWgHQKjjMGaCTkCY6kQ/HYJk1nfqtC+3ZEgCN3ZByQ2uWZwbfYX/5XXvAwRTmtD9HrkEbSI9BVm81wm8tduQ="
+
+after_success:
+  - python .travis.addServer.py
+  - mvn clean deploy --settings ~/.m2/mySettings.xml
+
+notifications:
+  email:
+    - info@tirasa.net

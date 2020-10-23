@@ -21,3 +21,13 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+/common-ui/target/
+nb-configuration.xml
+licenseheader.txt
+/app/target/
+/ext/flowable/target/
+/ext/saml2sp/target/
+/ext/oidcclient/target/
+/target/
+/ext/target/

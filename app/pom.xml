@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2020 Tirasa (info@tirasa.net)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>net.tirasa.syncope</groupId>
+    <artifactId>syncope-wicket-enduser</artifactId>
+    <version>2.1.8-SNAPSHOT</version> 
+  </parent>
+
+  <name>Apache Syncope: Wicket Enduser Common App</name>
+  <groupId>net.tirasa.syncope.wicket-enduser</groupId>
+  <artifactId>syncope-wicket-enduser-app</artifactId>
+  <packaging>jar</packaging>
+ 
+  <properties>
+    <rootpom.basedir>${basedir}/..</rootpom.basedir>
+  </properties>
+  
+  <dependencies>
+    <dependency> 
+      <groupId>javax.servlet</groupId> 
+      <artifactId>javax.servlet-api</artifactId> 
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+    </dependency>
+    
+    <dependency>
+      <groupId>net.tirasa.syncope.wicket-enduser</groupId>
+      <artifactId>syncope-wicket-enduser-common-ui</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.apache.wicket</groupId>
+      <artifactId>wicket</artifactId>
+      <type>pom</type>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.wicket</groupId>
+      <artifactId>wicket-extensions</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.wicket</groupId>
+      <artifactId>wicket-auth-roles</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.googlecode.wicket-jquery-ui</groupId>
+      <artifactId>wicket-jquery-ui</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.googlecode.wicket-jquery-ui</groupId>
+      <artifactId>wicket-jquery-ui-theme-base</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.googlecode.wicket-jquery-ui</groupId>
+      <artifactId>wicket-kendo-ui</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.googlecode.wicket-jquery-ui</groupId>
+      <artifactId>wicket-kendo-ui-culture</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.googlecode.wicket-jquery-ui</groupId>
+      <artifactId>wicket-kendo-ui-theme-bootstrap</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.wicket</groupId>
+      <artifactId>wicket-native-websocket-javax</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>de.agilecoders.wicket</groupId>
+      <artifactId>wicket-bootstrap-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>de.agilecoders.wicket</groupId>
+      <artifactId>wicket-bootstrap-extensions</artifactId>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.apache.syncope.client</groupId>
+      <artifactId>syncope-client-lib</artifactId>
+      <version>${syncope.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-rs-security-jose</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.pdfbox</groupId>
+      <artifactId>pdfbox</artifactId>
+    </dependency>
+      
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>font-awesome</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>ionicons</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>bootbox</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>codemirror</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>google-diff-match-patch</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>jsplumb</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars.bower</groupId>
+      <artifactId>chart.js</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>jquery-cookie</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>jquery-ui</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>jQuery-slimScroll</artifactId>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-slf4j-impl</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.lmax</groupId>
+      <artifactId>disruptor</artifactId>
+    </dependency>
+
+    <!-- required by wicket tester -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+      </plugin>
+    </plugins>
+
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+        <excludes>
+          <exclude>org/apache/syncope/**/*.properties</exclude>
+          <exclude>**/*.woff</exclude>
+          <exclude>**/*.woff2</exclude>
+        </excludes>
+      </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>false</filtering>
+        <includes>
+          <include>org/apache/syncope/**/*.properties</include>
+          <include>**/*.woff</include>
+          <include>**/*.woff2</include>
+        </includes>
+      </resource>
+      
+      <resource>
+        <directory>${basedir}</directory>
+        <targetPath>META-INF</targetPath>
+        <includes>
+          <include>LICENSE</include>
+          <include>NOTICE</include>
+        </includes>
+      </resource>
+    </resources>
+  </build>
+  
+  <profiles>
+    <profile>
+      <id>debug</id>
+      <properties>
+        <skipTests>true</skipTests>
+        <packaging.type>war</packaging.type>
+        <conf.directory>${project.build.directory}/test-classes</conf.directory>
+        <audit.directory>${project.build.directory}/audit</audit.directory>
+      </properties>
+      <dependencies>
+        <dependency>
+          <groupId>com.virginvoyages.iam</groupId>
+          <artifactId>syncope-enduser-ext-flowable</artifactId>
+          <version>${project.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>com.virginvoyages.iam</groupId>
+          <artifactId>syncope-enduser-ext-saml2sp</artifactId>
+          <version>${project.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>com.virginvoyages.iam</groupId>
+          <artifactId>syncope-ext-oidcclient-client-enduser</artifactId>
+          <version>${project.version}</version>
+        </dependency>
+      </dependencies>
+
+      <build>
+        <defaultGoal>clean package cargo:run</defaultGoal>
+
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>3.3.1</version>
+            <inherited>true</inherited>
+            <configuration>
+              <webResources>
+                <resource>
+                  <directory>${project.basedir}/src/test/webapp/WEB-INF</directory>
+                  <targetPath>WEB-INF</targetPath>
+                </resource>
+                <resource>
+                  <directory>${project.basedir}/src/main/resources/META-INF/resources/css</directory>
+                  <targetPath>css</targetPath>
+                </resource>
+                <resource>
+                  <directory>${project.basedir}/src/main/resources/META-INF/resources/img</directory>
+                  <targetPath>img</targetPath>
+                </resource>
+                <resource>
+                  <directory>${project.basedir}/src/main/resources/META-INF/resources/js</directory>
+                  <targetPath>js</targetPath>
+                </resource>
+              </webResources>
+            </configuration>
+          </plugin>
+          <plugin>
+            <groupId>org.codehaus.cargo</groupId>
+            <artifactId>cargo-maven2-plugin</artifactId>
+            <configuration>
+              <container>
+                <systemProperties>
+                  <java.security.egd>file:/dev/./urandom</java.security.egd>
+                  <java.util.secureRandomSeed>true</java.util.secureRandomSeed>
+                  <javax.net.ssl.trustStore>${rootpom.basedir}/fit/src/test/resources/keystore</javax.net.ssl.trustStore>
+                  <javax.net.ssl.trustStorePassword>password</javax.net.ssl.trustStorePassword>
+                </systemProperties>
+              </container>
+              <configuration>
+                <type>standalone</type>
+                <properties>
+                  <cargo.jvmargs>
+                    -Xdebug -Djaxb.debug=true -Xrunjdwp:transport=dt_socket,address=10000,server=y,suspend=n
+                    -Dwicket.configuration=development
+                    -XX:+CMSClassUnloadingEnabled -XX:+UseG1GC -Xmx1024m -Xms512m</cargo.jvmargs>
+              
+                  <cargo.servlet.port>10443</cargo.servlet.port>
+                  <cargo.rmi.port>10091</cargo.rmi.port>
+                  <cargo.tomcat.ajp.port>10092</cargo.tomcat.ajp.port>
+                  <cargo.protocol>https</cargo.protocol>
+                  <cargo.tomcat.connector.keystoreFile>${rootpom.basedir}/fit/src/test/resources/keystore</cargo.tomcat.connector.keystoreFile>
+                  <cargo.tomcat.connector.keystorePass>password</cargo.tomcat.connector.keystorePass>
+                  <cargo.tomcat.connector.keyAlias>tomcat</cargo.tomcat.connector.keyAlias>
+                  <cargo.tomcat.connector.clientAuth>false</cargo.tomcat.connector.clientAuth>
+                  <cargo.tomcat.connector.sslProtocol>TLS</cargo.tomcat.connector.sslProtocol>
+                  <cargo.tomcat.httpSecure>true</cargo.tomcat.httpSecure>              
+                </properties>
+              </configuration>
+              <deployables>
+                <deployable>
+                  <location>${project.build.directory}/${project.build.finalName}</location>
+                  <properties>
+                    <context>${project.build.finalName}</context>
+                  </properties>
+                </deployable>
+              </deployables>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+  
+</project>

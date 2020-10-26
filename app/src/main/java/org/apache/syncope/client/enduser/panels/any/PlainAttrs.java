@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2020 Tirasa (info@tirasa.net)
- * 
+ *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
@@ -382,6 +382,7 @@ public class PlainAttrs extends AbstractAttrs<PlainSchemaTO> {
                 @SuppressWarnings({ "unchecked", "rawtypes" })
                 protected void populateItem(final ListItem<AttrTO> item) {
                     AttrTO attrTO = item.getModelObject();
+                    PlainSchemaTO schema = schemas.get(attrTO.getSchema());
 
                     // set default values, if any
                     if (attrTO.getValues().stream().noneMatch(StringUtils::isNotBlank)) {
@@ -396,9 +397,10 @@ public class PlainAttrs extends AbstractAttrs<PlainSchemaTO> {
                                         attributableTO.getObject().getPlainAttr(attrTO.getSchema()), "values"))
                                 .build("panel", attrTO.getSchema(), FieldPanel.class.cast(panel));
                         // SYNCOPE-1215 the entire multifield panel must be readonly, not only its field
-                        ((MultiFieldPanel) panel).setReadOnly(schemas.get(attrTO.getSchema()).isReadonly());
+                        ((MultiFieldPanel) panel).setReadOnly(schema == null ? false : schema.isReadonly());
                     } else {
-                        FieldPanel.class.cast(panel).setNewModel(attrTO.getValues());
+                        FieldPanel.class.cast(panel).setNewModel(attrTO.getValues()).
+                                setReadOnly(schema == null ? false : schema.isReadonly());
                     }
 
                     item.add(panel);
@@ -426,6 +428,7 @@ public class PlainAttrs extends AbstractAttrs<PlainSchemaTO> {
                 @SuppressWarnings({ "unchecked", "rawtypes" })
                 protected void populateItem(final ListItem<AttrTO> item) {
                     AttrTO attrTO = item.getModelObject();
+                    PlainSchemaTO schema = schemas.get(attrTO.getSchema());
 
                     // set default values, if any
                     if (attrTO.getValues().stream().noneMatch(StringUtils::isNotBlank)) {
@@ -441,9 +444,10 @@ public class PlainAttrs extends AbstractAttrs<PlainSchemaTO> {
                                 attrTO.getSchema(),
                                 FieldPanel.class.cast(panel));
                         // SYNCOPE-1215 the entire multifield panel must be readonly, not only its field
-                        ((MultiFieldPanel) panel).setReadOnly(schemas.get(attrTO.getSchema()).isReadonly());
+                        ((MultiFieldPanel) panel).setReadOnly(schema == null ? false : schema.isReadonly());
                     } else {
-                        FieldPanel.class.cast(panel).setNewModel(attrTO.getValues());
+                        FieldPanel.class.cast(panel).setNewModel(attrTO.getValues()).
+                                setReadOnly(schema == null ? false : schema.isReadonly());
                     }
                     item.add(panel);
                 }

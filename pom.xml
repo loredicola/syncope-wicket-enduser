@@ -69,6 +69,15 @@
   <properties>
     <syncope.version>2.1.8-SNAPSHOT</syncope.version>
 
+    <cargo.log>${log.directory}/cargo.log</cargo.log>
+    <cargo.output>${log.directory}/cargo-output.log</cargo.output>
+    <tomcat.version>9.0.39</tomcat.version>
+
+    <conf.directory>${project.build.directory}/test-classes</conf.directory>
+    <log.directory>${project.build.directory}/log</log.directory>
+    <anonymousUser>anonymous</anonymousUser>
+    <anonymousKey>anonymousKey</anonymousKey>
+
     <targetJdk>1.8</targetJdk>
     <rootpom.basedir>${basedir}</rootpom.basedir>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

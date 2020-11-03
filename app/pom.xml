@@ -226,8 +226,15 @@
         </includes>
       </resource>
     </resources>
+
+    <testResources>
+      <testResource>
+        <directory>src/test/resources</directory>
+        <filtering>true</filtering>
+      </testResource>
+    </testResources>
   </build>
-  
+
   <profiles>
     <profile>
       <id>debug</id>
@@ -235,8 +242,6 @@
       <properties>
         <skipTests>true</skipTests>
         <packaging.type>war</packaging.type>
-        <conf.directory>${project.build.directory}/test-classes</conf.directory>
-        <audit.directory>${project.build.directory}/audit</audit.directory>
       </properties>
 
       <dependencies>
@@ -258,7 +263,7 @@
       </dependencies>
 
       <build>
-        <defaultGoal>clean package cargo:run</defaultGoal>
+        <defaultGoal>clean package war:war cargo:run</defaultGoal>
 
         <plugins>
           <plugin>
@@ -287,43 +292,43 @@
               </webResources>
             </configuration>
           </plugin>
+
           <plugin>
             <groupId>org.codehaus.cargo</groupId>
             <artifactId>cargo-maven2-plugin</artifactId>
+            <version>1.7.16</version>
             <configuration>
               <container>
+                <containerId>tomcat9x</containerId>
+                <zipUrlInstaller>
+                  <url>https://repo1.maven.org/maven2/org/apache/tomcat/tomcat/${tomcat.version}/tomcat-${tomcat.version}.zip</url>
+                  <downloadDir>${settings.localRepository}/org/codehaus/cargo/cargo-container-archives</downloadDir>
+                  <extractDir>${project.build.directory}/cargo/extract</extractDir>
+                </zipUrlInstaller>
+                <timeout>300000</timeout>
+                <log>${cargo.log}</log>
+                <output>${cargo.output}</output>    
+
                 <systemProperties>
                   <java.security.egd>file:/dev/./urandom</java.security.egd>
                   <java.util.secureRandomSeed>true</java.util.secureRandomSeed>
-                  <javax.net.ssl.trustStore>${rootpom.basedir}/fit/src/test/resources/keystore</javax.net.ssl.trustStore>
-                  <javax.net.ssl.trustStorePassword>password</javax.net.ssl.trustStorePassword>
                 </systemProperties>
               </container>
               <configuration>
                 <type>standalone</type>
                 <properties>
                   <cargo.jvmargs>
-                    -Xdebug -Djaxb.debug=true -Xrunjdwp:transport=dt_socket,address=10000,server=y,suspend=n
+                    -Xdebug -Djaxb.debug=true -Xrunjdwp:transport=dt_socket,address=8004,server=y,suspend=n
                     -Dwicket.configuration=development
                     -XX:+CMSClassUnloadingEnabled -XX:+UseG1GC -Xmx1024m -Xms512m</cargo.jvmargs>
-              
-                  <cargo.servlet.port>10443</cargo.servlet.port>
-                  <cargo.rmi.port>10091</cargo.rmi.port>
-                  <cargo.tomcat.ajp.port>10092</cargo.tomcat.ajp.port>
-                  <cargo.protocol>https</cargo.protocol>
-                  <cargo.tomcat.connector.keystoreFile>${rootpom.basedir}/fit/src/test/resources/keystore</cargo.tomcat.connector.keystoreFile>
-                  <cargo.tomcat.connector.keystorePass>password</cargo.tomcat.connector.keystorePass>
-                  <cargo.tomcat.connector.keyAlias>tomcat</cargo.tomcat.connector.keyAlias>
-                  <cargo.tomcat.connector.clientAuth>false</cargo.tomcat.connector.clientAuth>
-                  <cargo.tomcat.connector.sslProtocol>TLS</cargo.tomcat.connector.sslProtocol>
-                  <cargo.tomcat.httpSecure>true</cargo.tomcat.httpSecure>              
                 </properties>
               </configuration>
               <deployables>
                 <deployable>
                   <location>${project.build.directory}/${project.build.finalName}</location>
+                  <type>war</type>
                   <properties>
-                    <context>${project.build.finalName}</context>
+                    <context>syncope-enduser</context>
                   </properties>
                 </deployable>
               </deployables>

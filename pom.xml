@@ -69,6 +69,12 @@
   <properties>
     <syncope.version>2.1.8-SNAPSHOT</syncope.version>
 
+    <bootbox.version>5.4.0</bootbox.version>
+    <font-awesome.version>4.7.0</font-awesome.version>
+    <font-awesome.filename>font-awesome.min.css</font-awesome.filename>
+    <ionicons.version>2.0.1</ionicons.version>
+    <jquery-slimscroll.version>1.3.8</jquery-slimscroll.version>
+
     <cargo.log>${log.directory}/cargo.log</cargo.log>
     <cargo.output>${log.directory}/cargo-output.log</cargo.output>
     <tomcat.version>9.0.39</tomcat.version>
@@ -307,19 +313,6 @@
               <!-- Fail the build if any artifacts are missing legal files -->
               <strict>true</strict>
             </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>attach-javadocs</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
           </execution>
         </executions>
       </plugin>

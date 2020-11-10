@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2020 Tirasa (info@tirasa.net)
- * 
+ *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
@@ -77,6 +77,8 @@ public class Login extends WebPage {
     private final TextField<String> passwordField;
 
     private final BookmarkablePageLink<Void> selfPwdReset;
+
+    private BookmarkablePageLink<Void> selfRegistration;
 
     public Login(final PageParameters parameters) {
         super(parameters);
@@ -209,6 +211,13 @@ public class Login extends WebPage {
         selfPwdReset = new BookmarkablePageLink<>("self-pwd-reset", SelfPasswordReset.class);
         selfPwdReset.getPageParameters().add("domain", SyncopeEnduserSession.get().getDomain());
         add(selfPwdReset.setOutputMarkupId(true));
+
+        selfRegistration = new BookmarkablePageLink<>("self-registration", SelfRegistration.class);
+        selfRegistration.getPageParameters().add("domain", SyncopeEnduserSession.get().getDomain());
+        if (!SyncopeEnduserSession.get().getPlatformInfo().isSelfRegAllowed()) {
+            selfRegistration.setVisible(false);
+        }
+        add(selfRegistration.setOutputMarkupId(true));
     }
 
     @Override

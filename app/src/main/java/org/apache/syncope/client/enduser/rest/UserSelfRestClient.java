@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2020 Tirasa (info@tirasa.net)
- * 
+ *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
@@ -34,6 +34,14 @@ public class UserSelfRestClient extends BaseRestClient {
 
     public static void requestPasswordReset(final String username, final String securityAnswer) {
         getService(UserSelfService.class).requestPasswordReset(username, securityAnswer);
+    }
+
+    public ProvisioningResult<UserTO> create(final UserTO userTO, final boolean storePassword) {
+        ProvisioningResult<UserTO> result;
+        result = getService(UserSelfService.class).create(userTO, storePassword).readEntity(
+                new GenericType<ProvisioningResult<UserTO>>() {
+        });
+        return result;
     }
 
     public ProvisioningResult<UserTO> update(final String etag, final UserPatch userPatch) {

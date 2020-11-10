@@ -92,7 +92,7 @@ public class UserFormPanel extends AnyFormPanel<UserTO> implements UserForm {
         // captcha check
         boolean checked = true;
         if (SyncopeEnduserApplication.get().isCaptchaEnabled()) {
-            checked = captcha.captchaCheck();
+            checked = captcha.check();
         }
         if (!checked) {
             SyncopeEnduserSession.get().error(getString(Constants.CAPTCHA_ERROR));

@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2020 Tirasa (info@tirasa.net)
- * 
+ *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
@@ -28,7 +28,7 @@ import org.apache.wicket.model.Model;
 
 public class CaptchaPanel<T> extends Panel {
 
-    private static final long serialVersionUID = 1169850573252481471L;
+    private static final long serialVersionUID = -450657681453274465L;
 
     private static final SecureRandom RANDOM = new SecureRandom();
 
@@ -36,8 +36,6 @@ public class CaptchaPanel<T> extends Panel {
             usingRandom(RANDOM::nextInt).
             withinRange('a', 'z').
             build();
-
-    private String randomText;
 
     private final Model<String> captchaText = new Model<>();
 
@@ -52,8 +50,7 @@ public class CaptchaPanel<T> extends Panel {
 
             @Override
             protected byte[] render() {
-                randomText = RANDOM_LETTERS.generate(6);
-                getChallengeIdModel().setObject(randomText);
+                getChallengeIdModel().setObject(RANDOM_LETTERS.generate(6));
                 return super.render();
             }
         };
@@ -79,13 +76,13 @@ public class CaptchaPanel<T> extends Panel {
                 setOutputMarkupPlaceholderTag(true));
     }
 
-    public void reload() {
-        this.captchaImageResource.invalidate();
-    }
-
-    public boolean captchaCheck() {
-        return StringUtils.isBlank(captchaText.getObject()) || StringUtils.isBlank(randomText)
+    public boolean check() {
+        boolean check = StringUtils.isBlank(captchaText.getObject())
+                || StringUtils.isBlank(captchaImageResource.getChallengeId())
                 ? false
-                : captchaText.getObject().equals(randomText);
+                : captchaText.getObject().equals(captchaImageResource.getChallengeId());
+
+        captchaImageResource.invalidate();
+        return check;
     }
 }

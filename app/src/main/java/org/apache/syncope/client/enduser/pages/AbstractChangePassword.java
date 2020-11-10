@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2020 Tirasa (info@tirasa.net)
- * 
+ *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
@@ -22,14 +22,10 @@ import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public abstract class AbstractChangePassword extends BasePage {
 
     private static final long serialVersionUID = 5889157642852559004L;
-
-    protected static final Logger LOG = LoggerFactory.getLogger(AbstractChangePassword.class);
 
     public AbstractChangePassword(final PageParameters parameters) {
         super(parameters);

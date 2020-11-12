@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2020 Tirasa (info@tirasa.net)
- * 
+ *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
@@ -26,6 +26,7 @@ import org.apache.commons.lang3.time.FastDateFormat;
 import org.apache.syncope.client.ui.commons.MapChoiceRenderer;
 import org.apache.syncope.client.ui.commons.markup.html.form.AjaxDateTimeFieldPanel;
 import org.apache.syncope.client.ui.commons.markup.html.form.AjaxDropDownChoicePanel;
+import org.apache.syncope.client.ui.commons.markup.html.form.AjaxPasswordFieldPanel;
 import org.apache.syncope.client.ui.commons.markup.html.form.AjaxSpinnerFieldPanel;
 import org.apache.syncope.client.ui.commons.markup.html.form.AjaxTextFieldPanel;
 import org.apache.syncope.client.ui.commons.markup.html.form.FieldPanel;
@@ -163,6 +164,10 @@ public abstract class UserRequestFormPanel extends Panel {
                                 prop.setValue(String.valueOf(object));
                             }
                         });
+                        break;
+
+                    case Password:
+                        field = new AjaxPasswordFieldPanel("value", label, new PropertyModel<>(prop, "value"), false);
                         break;
 
                     case String:

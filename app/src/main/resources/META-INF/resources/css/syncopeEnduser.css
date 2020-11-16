@@ -1297,6 +1297,14 @@ h4.card-title {
   padding:1.01em 16px;
 }
 
+.card-container-body-request{
+  padding-bottom: 45px;
+}
+
+.card-container-padding{
+  padding-bottom: 45px;
+}
+
 .card-font-color a a:hover, a:active, a:focus {
   color: #ffffff;
 }
@@ -1305,6 +1313,23 @@ h4.card-title {
   margin-top:16px;
   margin-bottom:16px
 }
+
+.paginator a {
+  color: #999;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+}
+
+.paginator a.active {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+
+.paginator a:hover:not(.active) {background-color: #ddd;}
 
 @keyframes stroke {
   100% {

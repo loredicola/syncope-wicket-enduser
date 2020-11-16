@@ -18,6 +18,7 @@
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
   <wicket:panel>
+    <div class="card-container-padding">
       <span wicket:id="fragContainer"/>
       <wicket:fragment wicket:id="formProperties">
         <form wicket:id="userRequestWrapForm" class="form-horizontal">
@@ -32,5 +33,6 @@
         <span><wicket:message key="startTime"/>: <label wicket:id="startTime"/></span>
       </wicket:fragment>
       <input wicket:id="delete" type="button" wicket:message="value:delete" class="btn btn-danger pull-left">
+    </div>
   </wicket:panel>
 </html>

@@ -57,7 +57,7 @@ public class Flowable extends BasePage {
 
     private static final long serialVersionUID = -8781434495150074529L;
 
-    private final int rowsPerPage = 10;
+    private final int rowsPerPage = 5;
 
     private final Model<String> bpmnProcessModel = new Model<>();
 
@@ -161,8 +161,9 @@ public class Flowable extends BasePage {
             super(id);
 
             final UserRequestForm formTO = userRequest.getHasForm()
-                    ? UserRequestRestClient.getForm(SyncopeEnduserSession.get().getSelfTO().getUsername(), userRequest.
-                            getTaskId()).orElse(null)
+                    ? UserRequestRestClient.getForm(
+                            SyncopeEnduserSession.get().getSelfTO().getUsername(),
+                            userRequest.getTaskId()).orElse(null)
                     : null;
 
             add(formTO == null || formTO.getProperties() == null || formTO.getProperties().isEmpty()
@@ -252,5 +253,4 @@ public class Flowable extends BasePage {
             return Model.of(ur);
         }
     }
-
 }
